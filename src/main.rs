@@ -1,11 +1,11 @@
 extern crate stm32f4;
 use stm32f4::stm32f405;
 
-const BITS_PER_CHANNEL: u32 = 8;
-const NUM_CHANNELS: u32 = 3;
-const BITS_PER_LED: u32 = BITS_PER_CHANNEL * NUM_CHANNELS;
+const _BITS_PER_CHANNEL: u32 = 8;
+const _NUM_CHANNELS: u32 = 3;
+const _BITS_PER_LED: u32 = _BITS_PER_CHANNEL * _NUM_CHANNELS;
 
-struct Led {
+struct _Led {
     green: u8,
     red: u8,
     blue: u8
@@ -14,7 +14,6 @@ struct Led {
 fn clock_setup(peripherals: &mut stm32f405::Peripherals) {
     let rcc = &peripherals.RCC;
     let flash = &peripherals.FLASH;
-    let syscfg = &peripherals.SYSCFG;
 
     // Ensure HSE is on and stable
     rcc.cr.modify(|_, w| w.hseon().set_bit());
@@ -70,4 +69,5 @@ fn gpio_setup(peripherals: &mut stm32f405::Peripherals) {
 fn main() {
     let mut peripherals = stm32f405::Peripherals::take().unwrap();
     clock_setup(&mut peripherals);
+    gpio_setup(&mut peripherals);
 }
