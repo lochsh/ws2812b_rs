@@ -1,0 +1,9 @@
+[package]
+name = "ws2812b_rs"
+version = "0.1.0"
+authors = ["Hannah McLaughlin <h@mcla.ug>"]
+
+[dependencies.stm32f4]
+version = "0.3.2"
+# Edit this feature to change which STM32F4 device you are using
+features = ["stm32f405", "rt"]
