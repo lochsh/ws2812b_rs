@@ -62,6 +62,11 @@ fn clock_setup(peripherals: &mut stm32f405::Peripherals) {
     while !rcc.cfgr.read().sws().is_pll() {}
 }
 
+fn gpio_setup(peripherals: &mut stm32f405::Peripherals) {
+    let gpiob = &peripherals.GPIOB;
+    gpiob.afrl.modify(|_, w| w.afrl0().af2());
+}
+
 fn main() {
     let mut peripherals = stm32f405::Peripherals::take().unwrap();
     clock_setup(&mut peripherals);
