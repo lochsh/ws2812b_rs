@@ -63,6 +63,7 @@ fn clock_setup(peripherals: &mut stm32f405::Peripherals) {
 
 fn gpio_setup(peripherals: &mut stm32f405::Peripherals) {
     let gpiob = &peripherals.GPIOB;
+    gpiob.moder.modify(|_, w| w.moder0().alternate());
     gpiob.afrl.modify(|_, w| w.afrl0().af2());
 }
 
